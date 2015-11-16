@@ -15,15 +15,19 @@
 DEVICE_PACKAGE_OVERLAYS += \
     device/sony/scorpion/overlay
 
+PRODUCT_COPY_FILES += \
+    device/sony/scorpion/rootdir/fstab.shinano:root/fstab.shinano
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/sony/shinano/device.mk)
 $(call inherit-product-if-exists, vendor/sony/scorpion/scorpion-vendor.mk)
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 $(call inherit-product-if-exists, prebuilts/chromium/webview_prebuilt.mk)
 $(call inherit-product-if-exists, vendor/google/products/gms.mk)
 
 PRODUCT_COPY_FILES += \
+    device/sony/scorpion/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/sony/scorpion/rootdir/system/etc/BCM4354.hcd:system/etc/firmware/BCM43xx.hcd \
     device/sony/scorpion/rootdir/system/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     device/sony/scorpion/rootdir/system/etc/sensors_calib.conf:system/etc/sensors_calib.conf \
@@ -67,6 +71,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := large
 PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
