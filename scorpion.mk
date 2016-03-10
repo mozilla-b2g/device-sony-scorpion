@@ -24,4 +24,7 @@ BOOTANIMATION_ASSET_SIZE := 1080p
 PRODUCT_COPY_FILES += \
     device/sony/scorpion/bootrec-device:root/sbin/bootrec-device
 
+# Set Gecko toolchain
+GECKO_TOOLS_PREFIX = prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+
 $(call inherit-product-if-exists, vendor/sony/scorpion-blobs/scorpion-vendor-blobs.mk)
